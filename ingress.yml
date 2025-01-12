@@ -3,15 +3,22 @@ kind: Ingress
 metadata:
   name: ingress-reddit-app
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/backend-protocol: "https"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
 spec:
+  tls:
+  - hosts:
+    - fake
+    secretName: auth-com-tls-secret
   ingressClassName: nginx
   rules:
-  - host: "reddit.local"
+  - host: "backendempleado.activeit.com"
     http:
       paths:
       - pathType: Prefix
-        path: "/test"
+        path: "/reddit-clone"
         backend:
           service:
             name: reddit-clone-service
