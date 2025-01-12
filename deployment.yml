@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Reddit-clone-deployment
+  name: reddit-clone-deployment
   labels:
     app: kuber-project
 spec:
