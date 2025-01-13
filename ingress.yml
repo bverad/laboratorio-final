@@ -5,12 +5,13 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
+  ingressClassName: nginx
   rules:
   - host: "reddit.local"
     http:
       paths:
       - pathType: Prefix
-        path: "/test"
+        path: "/"
         backend:
           service:
             name: reddit-clone-service
